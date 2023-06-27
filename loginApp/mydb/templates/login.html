@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        :root {
+          color-scheme: dark;
+        }
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+        }
+        .form {
+          display: block;
+          padding: 1rem;
+          margin: 1rem;
+          max-width: 400px;
+          border: 1px solid;
+          border-radius: 0.5rem;
+          box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1),
+            0 4px 6px -2px rgba(255, 255, 255, 0.05);
+        }
+  
+        .form-title {
+          font-size: 1.25rem;
+          line-height: 1.75rem;
+          font-weight: 600;
+          text-align: center;
+        }
+        .input-container input,
+        .form button {
+          outline: none;
+          border: 1px solid #e5e7eb;
+          margin: 8px 0;
+        }
+  
+        .input-container input{
+          display: block;
+          padding: 0.5rem;
+          padding-right: 3rem;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+          max-width: 150px;
+          border-radius: 0.5rem;
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+  
+        .submit {
+          display: block;
+          padding-top: 0.75rem;
+          padding-bottom: 0.75rem;
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+          background-color: #4f46e5;
+          color: #ffffff;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+          font-weight: 500;
+          width: 100%;
+          border-radius: 0.5rem;
+          text-transform: uppercase;
+        }
+  
+        .signup-link {
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+          text-align: center;
+        }
+  
+        .signup-link a {
+          text-decoration: underline;
+        }
+      </style>
+  </head>
+  <body>
+    {% if error_message %}
+    <p>{{error_message}}</p>
+    {% endif %}
+    <form method="post" class="form">
+      {% csrf_token %}
+      <h1 class="form-title">Login</h1>
+      <div class="input-container">
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <div class="input-container">
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <input type="submit" class="submit" value="Login" />
+      <p class="signup-link">
+        No account?
+        <a href="/register">Sign up</a>
+      </p>
+    </form>
+  </body>
+</html>
